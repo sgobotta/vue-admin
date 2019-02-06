@@ -80,50 +80,50 @@
 </template>
 
 <script>
-import UI_CONTENT from '../../../constants/ui.content.default'
-import UI_NAMES from '../../../constants/ui.element.names'
+import UI_CONTENT from '../../../constants/ui.content.default';
+import UI_NAMES from '../../../constants/ui.element.names';
 
 export default {
-  name: "Ui",
+  name: 'Ui',
   props: {
-    title: String
+    title: String,
   },
   data() {
     return {
-      selectedLocale: "EN",
-      locales: ["EN", "ID"],
+      selectedLocale: 'EN',
+      locales: ['EN', 'ID'],
       drawer: false,
       menuItems: [
         {
-          icon: "keyboard_arrow_up",
-          "icon-alt": "keyboard_arrow_down",
-          title: "Crud",
+          icon: 'keyboard_arrow_up',
+          'icon-alt': 'keyboard_arrow_down',
+          title: 'Crud',
           model: true,
-          children: []
-        }
+          children: [],
+        },
       ],
       UI_CONTENT,
-      UI_NAMES
+      UI_NAMES,
     };
   },
   mounted() {
     // Listen to addRoutes mutations
-    let whitelist = ["resources/addRoute"];
-    this.$store.subscribe(mutation => {
+    const whitelist = ['resources/addRoute'];
+    this.$store.subscribe((mutation) => {
       if (whitelist.includes(mutation.type)) {
-        this.menuItems.forEach(item => {
+        this.menuItems.forEach((item) => {
           item.children.push({
-            icon: "list",
+            icon: 'list',
             title: mutation.payload.name,
-            link: mutation.payload.path
+            link: mutation.payload.path,
           });
-        })
+        });
       }
     });
   },
   computed: {},
   methods: {
-  }
+  },
 };
 </script>
 

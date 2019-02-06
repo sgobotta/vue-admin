@@ -1,4 +1,4 @@
-import createCrudModule from "vuex-crud";
+import createCrudModule from 'vuex-crud';
 
 /**
  * Modules utils - Given a set of data, creates a vuex crud module and calls
@@ -16,17 +16,17 @@ export default ({
   resourceName,
   resourceIdName,
   parseResponses,
-  store
+  store,
 }) => {
   const customUrlFn = (id) => {
-    const rootUrl =`${apiUrl}${resourceName}/`
-    return id ? `${rootUrl}${id}` : rootUrl
-  }
+    const rootUrl = `${apiUrl}${resourceName}/`;
+    return id ? `${rootUrl}${id}` : rootUrl;
+  };
   const module = createCrudModule({
     resource: resourceName,
     customUrlFn,
     idAttribute: resourceIdName,
-    ...parseResponses
+    ...parseResponses,
   });
   store.registerModule(resourceName, module);
-}
+};

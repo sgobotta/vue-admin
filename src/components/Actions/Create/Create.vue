@@ -33,70 +33,70 @@
 </template>
 
 <script>
-import UI_CONTENT from '@constants/ui.content.default'
-import UI_NAMES from '@constants/ui.element.names'
-import { mapState } from "vuex";
-import { Input, TextField } from "../../UiComponents"
+import UI_CONTENT from '@constants/ui.content.default';
+import UI_NAMES from '@constants/ui.element.names';
+import { mapState } from 'vuex';
+import { Input, TextField } from '../../UiComponents';
 
 export default {
-  name: "Create",
+  name: 'Create',
   components: {
-    Input: Input,
-    TextField: TextField
+    Input,
+    TextField,
   },
   props: {
     resourceName: {
       type: String,
-      require: true
+      require: true,
     },
     fields: {
       type: Array,
-      required: true
+      required: true,
     },
     va: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       view: 'create',
       UI_CONTENT,
-      UI_NAMES
-    }
+      UI_NAMES,
+    };
   },
 
   computed: {
     ...mapState([
-      "route" // vuex-router-sync
-    ])
+      'route', // vuex-router-sync
+    ]),
   },
 
   methods: {
     storeValue(value, resourceKey) {
-      this.va.updateEntity({ resourceKey, value })
+      this.va.updateEntity({ resourceKey, value });
     },
 
     submit() {
-      this.va.submitEntity()
+      this.va.submitEntity();
     },
 
     type(type) {
-      return type || 'Input'
+      return type || 'Input';
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`
+      return `${this.resourceName}_${label}`;
     },
 
     label(field) {
-      return field.label || field
+      return field.label || field;
     },
 
     args(field) {
-      const args = typeof(field) === 'string' ? { label: field, placeHolder: field } : field
-      return args
-    }
-  }
+      const args = typeof (field) === 'string' ? { label: field, placeHolder: field } : field;
+      return args;
+    },
+  },
 };
 </script>

@@ -1,4 +1,4 @@
-import { initialResourcesRoutes } from './common.utils'
+import { initialResourcesRoutes } from './common.utils';
 
 /**
  * Anonymous Function - Creates a simualtion of initial vuex crud state
@@ -9,8 +9,8 @@ export default () => {
   // Initial vuex crud resources should be added here
   const initialResources = [
     'articles',
-    'magazines'
-  ]
+    'magazines',
+  ];
   // Vuex Crud Initial State for a resource
   const initialResourceState = {
     createError: null,
@@ -26,14 +26,14 @@ export default () => {
     isUpdating: false,
     list: [],
     replaceError: null,
-    updateError: null
-  }
+    updateError: null,
+  };
   // Vuex Initial State for entities
-  const initialEntitiesState = {}
+  const initialEntitiesState = {};
   // Vuex Initial State for resource routes
   const initialResourcesState = {
-    routes: initialResourcesRoutes(initialResources)
-  }
+    routes: initialResourcesRoutes(initialResources),
+  };
 
   /**
    * initResourcesCrud - Given a list of resources, creates mocked vuex crud
@@ -44,16 +44,16 @@ export default () => {
    * @return {Object} An object with mocked vuex crud state
    */
   function initResourcesState(resources) {
-    const _resources = {}
-    resources.forEach(resource => {
-      _resources[resource] = initialResourceState
-    })
-    return _resources
+    const _resources = {};
+    resources.forEach((resource) => {
+      _resources[resource] = initialResourceState;
+    });
+    return _resources;
   }
 
   return {
     ...initResourcesState(initialResources),
     entities: initialEntitiesState,
-    resources: initialResourcesState
-  }
-}
+    resources: initialResourcesState,
+  };
+};

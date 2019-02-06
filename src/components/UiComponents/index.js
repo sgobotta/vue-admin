@@ -3,5 +3,5 @@ import TextField from './TextField';
 
 export {
   Input,
-  TextField
-}
+  TextField,
+};

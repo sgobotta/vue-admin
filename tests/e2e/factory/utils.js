@@ -5,11 +5,11 @@ export const ipsum = new Ipsum({
   minSentenceWords: 2,
   maxSentenceWords: 6,
   minParagraphSentences: 1,
-  maxParagraphSentences: 3
-})
+  maxParagraphSentences: 3,
+});
 
 export const numbers = {
   randomBetween(min, max) {
-    return Math.floor(Math.random()*(max-min+1)+min)
-  }
-}
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  },
+};

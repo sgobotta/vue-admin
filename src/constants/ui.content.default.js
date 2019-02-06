@@ -17,7 +17,7 @@ export default {
 
   // Any View Title (List, Show, Create, Edit)
   RESOURCE_VIEW_TITLE: {
-    with: ({ resourceName }) => `${resourceName}`
+    with: ({ resourceName }) => `${resourceName}`,
   },
   // Create action button
   RESOURCE_CREATE_BUTTON: 'add',
@@ -32,5 +32,5 @@ export default {
   CREATE_SUBMIT_BUTTON: 'save',
 
   // Edit Save button
-  EDIT_SUBMIT_BUTTON: 'save'
-}
+  EDIT_SUBMIT_BUTTON: 'save',
+};

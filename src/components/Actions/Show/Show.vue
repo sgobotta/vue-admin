@@ -31,88 +31,88 @@
 
 
 <script>
-import UI_CONTENT from '@constants/ui.content.default'
-import UI_NAMES from '@constants/ui.element.names'
-import { mapState } from "vuex";
-import { Input, TextField } from "../../UiComponents"
-import { EditButton, Delete } from "../../Actions";
+import UI_CONTENT from '@constants/ui.content.default';
+import UI_NAMES from '@constants/ui.element.names';
+import { mapState } from 'vuex';
+import { Input, TextField } from '../../UiComponents';
+import { EditButton, Delete } from '..';
 
 export default {
-  name: "Show",
+  name: 'Show',
 
   props: {
     resourceName: {
       type: String,
-      required: true
+      required: true,
     },
     fields: {
       type: Array,
-      required: true
+      required: true,
     },
     va: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
   data() {
     return {
       view: 'show',
       UI_CONTENT,
-      UI_NAMES
-    }
+      UI_NAMES,
+    };
   },
 
   computed: {
-    resourceShow: function() {
-      return this.va.getEntity()
+    resourceShow() {
+      return this.va.getEntity();
     },
 
     ...mapState([
-      "route" // vuex-router-sync
-    ])
+      'route', // vuex-router-sync
+    ]),
   },
 
   components: {
-    Input: Input,
-    TextField: TextField,
-    Delete: Delete,
-    EditButton: EditButton
+    Input,
+    TextField,
+    Delete,
+    EditButton,
   },
 
   methods: {
     fetchData() {
-      return this.va.fetchEntity()
+      return this.va.fetchEntity();
     },
 
     type(type) {
-      return type || 'TextField'
+      return type || 'TextField';
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`
+      return `${this.resourceName}_${label}`;
     },
 
     label(field) {
-      return field.label || field
+      return field.label || field;
     },
 
     args(field) {
-      const args = typeof(field) === 'string' ? { 'label': field } : field
-      return args
+      const args = typeof (field) === 'string' ? { label: field } : field;
+      return args;
     },
 
     componentName(field) {
-      return UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD.with({ resourceName: this.resourceName, view: this.view, field: this.label(field) })
-    }
+      return UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD.with({ resourceName: this.resourceName, view: this.view, field: this.label(field) });
+    },
   },
 
   watch: {
-    $route: "fetchData"
+    $route: 'fetchData',
   },
 
   created() {
     this.fetchData();
-  }
+  },
 };
 </script>

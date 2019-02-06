@@ -1,7 +1,7 @@
 import {
   handleEmptyProp,
-  handleSchemaValidation
-} from '@handlers/error/src'
+  handleSchemaValidation,
+} from '@handlers/error/src';
 
 /**
  * Defaults - Default attributes for the Resource component
@@ -9,7 +9,7 @@ import {
  * @return {Object} An object containing props and methods
  */
 export default () => {
-  const component = 'Resource'
+  const component = 'Resource';
 
   function _parseResponse(response) {
     const { data } = response;
@@ -18,29 +18,29 @@ export default () => {
 
   function _parseResponses() {
     return {
-      set parseList(response) { return _parseResponse(response) },
-      set parseSingle(response) { return _parseResponse(response) }
-    }
+      set parseList(response) { return _parseResponse(response); },
+      set parseSingle(response) { return _parseResponse(response); },
+    };
   }
 
   function _redirect() {
     return {
       views: {
         create: 'list',
-        edit: 'show'
-      }
-    }
+        edit: 'show',
+      },
+    };
   }
 
   /**
    * Resource default props
    */
-  const apiUrl         = handleEmptyProp({ prop: 'apiUrl', at: component })
-  const list           = handleEmptyProp({ prop: 'list', at: component })
-  const name           = handleEmptyProp({ prop: 'name', at: component })
-  const parseResponses = _parseResponses
-  const redirect       = _redirect
-  const resourceIdName = 'id'
+  const apiUrl = handleEmptyProp({ prop: 'apiUrl', at: component });
+  const list = handleEmptyProp({ prop: 'list', at: component });
+  const name = handleEmptyProp({ prop: 'name', at: component });
+  const parseResponses = _parseResponses;
+  const redirect = _redirect;
+  const resourceIdName = 'id';
 
   /**
    * Resource default validations
@@ -49,8 +49,8 @@ export default () => {
     return handleSchemaValidation({
       schema: redirect,
       prop: 'redirect',
-      at: component
-    })
+      at: component,
+    });
   }
 
   return {
@@ -60,10 +60,10 @@ export default () => {
       resourceIdName,
       apiUrl,
       redirect,
-      parseResponses
+      parseResponses,
     },
     validate: {
-      redirect: validateRedirect
-    }
-  }
-}
+      redirect: validateRedirect,
+    },
+  };
+};
